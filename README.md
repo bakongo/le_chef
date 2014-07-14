@@ -26,6 +26,7 @@ Attributes
 
 * `node['le']['account_key']` - your Logentries account_key (this can be found following [this link](https://logentries.com/doc/accountkey/))
 * `node['le']['hostname']` - sets the hostname of the log to the machine name, defaults to `node['hostname']`
+* `node['le']['name']` - sets the name of the logical name of the log, defaults to `node['hostname']`
 * `node['le']['logs_to_follow']` - An array of logs to follow (use absolute paths)
 
 Usage
