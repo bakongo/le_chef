@@ -37,9 +37,13 @@ end
 
 package 'logentries'
 
-execute "le register --account-key=#{node['le']['account_key']} --hostname='#{node['le'][:hostname]}' --name='#{node['le'][:name]}'" do
+execute "le register --account-key=#{node['le']['account_key']} --hostname='#{node['le']['hostname']} --name='#{node['le']['name']}" do
   not_if 'le whoami'
 end
+
+# execute "le monitor --account-key=#{node['le']['account_key']}" do
+#   not_if 'le whoami'
+# end
 
 package 'logentries-daemon'
 

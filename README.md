@@ -28,11 +28,17 @@ Attributes
 * `node['le']['hostname']` - sets the hostname of the log to the machine name, defaults to `node['hostname']`
 * `node['le']['name']` - sets the name of the logical name of the log, defaults to `node['hostname']`
 * `node['le']['logs_to_follow']` - An array of logs to follow (use absolute paths)
+* `node['le']['monitor']` -  Should the 'le' agent monitor this host also? (true/false)
 
 Usage
 -----
 
 Put depends 'yum', and 'apt', in your metadata.rb to gain access to the resources.
+
+Using on AWS Opsworks
+---------------------
+
+
 
 Updating the Logentries Agent
 =============================
