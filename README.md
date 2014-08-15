@@ -24,11 +24,10 @@ Attributes
 
 ### Default
 
-* `node['le']['account_key']` - your Logentries account_key (this can be found following [this link](https://logentries.com/doc/accountkey/))
-* `node['le']['hostname']` - sets the hostname of the log to the machine name, defaults to `node['hostname']`
-* `node['le']['name']` - sets the name of the logical name of the log, defaults to `node['hostname']`
-* `node['le']['logs_to_follow']` - An array of logs to follow (use absolute paths)
-* `node['le']['monitor']` -  Should the 'le' agent monitor this host also? (true/false)
+* `node['le_chef']['account_key']` - your Logentries account_key (this can be found following [this link](https://logentries.com/doc/accountkey/))
+* `node['le_chef']['hostname']` - sets the hostname of the log to the machine name, defaults to `node['hostname']`
+* `node['le_chef']['name']` - sets the name of the logical name of the log, defaults to `node['hostname']`
+* `node['le_chef']['logs_to_follow']` - An array of logs to follow (use absolute paths)
 
 Usage
 -----
@@ -36,8 +35,25 @@ Usage
 Put depends 'yum', and 'apt', in your metadata.rb to gain access to the resources.
 
 Using on AWS Opsworks
----------------------
+--------------------------
 
+1. Add the logentries configuration in an 'le' block in the stack configuration. (see sample below)
+2. Depending on how you run custom recipes on the stacks, either:
+  - add this cookbook to your custom recipes
+  - add this cookbook to your custom recipes with Berkshelf
+  - use this repo directly as your custom chef recipes repository URL.
+
+
+```
+"le": {
+         "account_key":"abc",
+         "hostname": "app-99",
+         "logs_to_follow": [
+           "/var/log/messages",
+           "/var/log/secure"
+         ]
+      }
+```
 
 
 Updating the Logentries Agent

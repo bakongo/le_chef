@@ -41,10 +41,6 @@ execute "le register --account-key=#{node['le']['account_key']} --hostname='#{no
   not_if 'le whoami'
 end
 
-# execute "le monitor --account-key=#{node['le']['account_key']}" do
-#   not_if 'le whoami'
-# end
-
 package 'logentries-daemon'
 
 class Chef::Recipe
@@ -52,7 +48,7 @@ class Chef::Recipe
 end
 
 # Follow logs from the JSON config
-follow_logs()
+follow_logs
 
 # Start the service
 service 'logentries' do
